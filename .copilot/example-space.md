@@ -1,56 +1,25 @@
-````markdown
-name: Example Space for KTCEDC
-summary: A minimal Copilot Space manifest and guidance for this repository.
+# Suggested Copilot context for RepoTestUse
 
----
+This document is **human-readable guidance**, not a deployed Copilot Space, an official YAML schema, or proof that any toolset is connected.
 
-# What to include in this Space
+## Suggested source context
 
-This repository contains example configuration for GitHub Copilot Spaces. Add the following context to the Space to make Copilot Chat an effective assistant for this repo:
+Use only repository content that is appropriate for a public example:
 
-- Repository root files: README.md, mcp_config.json, .devcontainer/devcontainer.json
-- Important paths: any src/ or docs/ folders, configuration files, CI workflows
-- Architecture notes: high-level overview of the project, core components, data flow
-- Setup & dev steps: how to run the project locally, required environment variables, build & test commands
-- Known issues / TODOs: short list of open tasks, design trade-offs, and any files to avoid
-- Example prompts & tasks: a set of natural-language questions and tasks you often ask Copilot about this repo
+- [`README.md`](../README.md): repository purpose and limitations
+- [`mcp_config.json`](../mcp_config.json): example client-side MCP settings
+- [`.devcontainer/devcontainer.json`](../.devcontainer/devcontainer.json): development-container setup
+- [`.github/workflows/blank.yml`](../.github/workflows/blank.yml): illustrative, non-validating workflow
 
-# Example Space manifest (suggested content)
+## Useful questions for an assistant
 
-```yaml
-# space-manifest.yml
-title: "KTCEDC example Space"
-owner: "RepoKan"
-visibility: private
-context:
-  - path: 
-    - README.md
-    - mcp_config.json
-    - .devcontainer/devcontainer.json
-  - files:
-    - path: "README.md"
-      purpose: "Project overview & how to use Copilot Spaces"
-    - path: "mcp_config.json"
-      purpose: "MCP client configuration enabling copilot_spaces toolset"
-  - notes:
-    - "Add architecture.md with diagrams and component responsibilities"
+- What configuration files does this repository contain?
+- Which statements are examples rather than verified live integrations?
+- What would need to be tested before introducing a real MCP endpoint?
+- Which repository files must remain free of secrets and private project data?
 
-# recommended sample queries
-queries:
-  - "How do I run the project locally?"
-  - "Where is the devcontainer configuration and how do I change the base image?"
-  - "Summarize the files that configure Copilot Spaces for this repo."
-```
+## Verification
 
-# Security and private data
-- Do NOT add secrets, private keys, or credentials to the Space. Instead document how to obtain them and how to configure them locally (e.g., using environment variables or a secrets manager).
+If you use a Copilot context or MCP client, check its current supported configuration format and authentication model in that client's official documentation. Verify the actual tool connection, permissions, and returned results separately. Do not treat these notes as evidence that GitHub Copilot Spaces or MCP integration is configured.
 
-# Using the Space in Copilot Chat
-1. Point your MCP client at the provided `mcp_config.json` (already in repo root).
-2. Enable the `copilot_spaces` toolset via the X-MCP-Toolsets header.
-3. Use the example prompts above to validate the Space’s usefulness and add additional context as needed.
-
----
-
-If you’d like, I can commit this file to .copilot/example-space.md in the repository now.
-````
+**Do not add** client secrets, internal repository documents, production keys, token-bearing logs, or private project links to a public context collection.
